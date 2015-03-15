@@ -1,0 +1,59 @@
+# encoding: utf-8
+require 'soul_catcher'
+require 'choice'
+
+Choice.options do
+  header ''
+  header 'Specific options:'
+
+  option :ssid do
+    short '-s'
+    long '--ssid *SSID'
+    desc 'Set one of severals SSID of the targeted access point'
+  end
+
+  option :length do
+    short '-l'
+    long '--length=[length]'
+    desc 'Set one of severals SSID of the targeted access point (default: normal)'
+    valid %w[quick normal long]
+    default "normal"
+  end
+
+  option :interface do
+    short '-i'
+    long '--interface=[interface]'
+    desc 'Set the interface of the targeted access point which will be used (default: wlan0)'
+    default "wlan0"
+  end
+
+  separator ''
+  separator 'Common options: '
+
+  option :help do
+    long '--help'
+    desc 'Show this message'
+  end
+
+  option :version do
+    short '-v'
+    long '--version'
+    desc 'Show version'
+    action do
+      puts "Soul Catcher v0.1"
+      exit      
+    end
+  end
+end
+
+Choice.choices[:ssid] ||= []
+Choice.choices[:length] = case Choice.choices[:length]
+  when "quick"
+    0.07
+  when "normal"
+    0.15
+  when "long"
+    0.3
+end
+
+SoulCatcher.load(Choice.choices)
