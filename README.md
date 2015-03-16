@@ -1,6 +1,6 @@
 # SoulCatcher
 
-TODO: Write a gem description
+Soul Catcher enables us to list MAC addresses connected client to nearby wifi access points.
 
 ## Installation
 
@@ -20,7 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```sh
+Usage: soul_catcher [-sliv]
+
+Specific options:
+    -s, --ssid *SSID                 Set one of severals SSID of the targeted access point
+    -l, --length=[length]            Set the duration of the scan (default: normal)
+    -i, --interface=[interface]      Set the interface of the targeted access point which will be used (default: wlan0)
+
+Common options: 
+        --help                       Show this message
+    -v, --version                    Show version
+```
 
 ## Contributing
 

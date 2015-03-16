@@ -15,7 +15,7 @@ Choice.options do
   option :length do
     short '-l'
     long '--length=[length]'
-    desc 'Set one of severals SSID of the targeted access point (default: normal)'
+    desc 'Set the duration of the scan (default: normal)'
     valid %w[quick normal long]
     default "normal"
   end
